@@ -2,7 +2,7 @@
     "type": "MySQLNotebook",
     "version": "1.0",
     "caption": "DB Notebook",
-    "content": "\\about\nuse fma;\nselect \n* from track limit 10\nUPDATE track\nSET genre_id = JSON_UNQUOTE(JSON_EXTRACT(track_genres, '$[0].genre_id'));\n\nSELECT track_id, track_genres\nFROM track\nLIMIT 10;\n\nUPDATE track\nSET track_genres = REPLACE(REPLACE(track_genres, '''', '\"'), '\"\"', '\"')\nWHERE track_genres LIKE \"[{'%}]\";\n\nSELECT track_id, track_genres\nFROM track\nLIMIT 10;\nUPDATE track\nSET genre_id = JSON_UNQUOTE(JSON_EXTRACT(track_genres, '$[0].genre_id'));\n\nSELECT track_id, genre_id\nFROM track\nLIMIT 10;\n\nSELECT DISTINCT genre_id\nFROM track\nWHERE genre_id NOT IN (SELECT genre_id FROM genre);\n\nALTER TABLE track\nADD CONSTRAINT fk_genre\nFOREIGN KEY (genre_id) REFERENCES genre(genre_id);\n\nselect * from genre limit 10;\nDESCRIBE genre;\n\n\nDESCRIBE track;\nuse fma;\n\nalter TABLE echonest add PRIMARY KEY (track_id);\nalter table echonest\nadd CONSTRAINT fk_track_echonest\nFOREIGN KEY (track_id) REFERENCES track(track_id)\non delete CASCADE\non update CASCADE;\nDESCRIBE echonest;\nDESCRIBE track;\nSELECT echonest.track_id\nFROM echonest\nLEFT JOIN track ON echonest.track_id = track.track_id\nWHERE track.track_id IS NULL;\n\n-- going to drop the missing lines from the above querry not worth the amount of granualrity gained \nDELETE echonest\nFROM echonest\nLEFT JOIN track ON echonest.track_id = track.track_id\nWHERE track.track_id IS NULL;\n\n-- create relationship adding the cascade so that any other changes that i do on either table dont mess up the order/stored data\nalter table echonest\nadd CONSTRAINT fk_track_echonest\nFOREIGN KEY (track_id) REFERENCES track(track_id)\non delete CASCADE\non update CASCADE;\n",
+    "content": "\\about\nuse fma;\nselect \n* from track limit 10\nUPDATE track\nSET genre_id = JSON_UNQUOTE(JSON_EXTRACT(track_genres, '$[0].genre_id'));\n\nSELECT track_id, track_genres\nFROM track\nLIMIT 10;\n\nUPDATE track\nSET track_genres = REPLACE(REPLACE(track_genres, '''', '\"'), '\"\"', '\"')\nWHERE track_genres LIKE \"[{'%}]\";\n\nSELECT track_id, track_genres\nFROM track\nLIMIT 10;\nUPDATE track\nSET genre_id = JSON_UNQUOTE(JSON_EXTRACT(track_genres, '$[0].genre_id'));\n\nSELECT track_id, genre_id\nFROM track\nLIMIT 10;\n\nSELECT DISTINCT genre_id\nFROM track\nWHERE genre_id NOT IN (SELECT genre_id FROM genre);\n\nALTER TABLE track\nADD CONSTRAINT fk_genre\nFOREIGN KEY (genre_id) REFERENCES genre(genre_id);\n\nselect * from genre limit 10;\nDESCRIBE genre;\n\n\nDESCRIBE track;\nuse fma;\n\nalter TABLE echonest add PRIMARY KEY (track_id);\nalter table echonest\nadd CONSTRAINT fk_track_echonest\nFOREIGN KEY (track_id) REFERENCES track(track_id)\non delete CASCADE\non update CASCADE;\nDESCRIBE echonest;\nDESCRIBE track;\nSELECT echonest.track_id\nFROM echonest\nLEFT JOIN track ON echonest.track_id = track.track_id\nWHERE track.track_id IS NULL;\n\n-- going to drop the missing lines from the above querry not worth the amount of granualrity gained \nDELETE echonest\nFROM echonest\nLEFT JOIN track ON echonest.track_id = track.track_id\nWHERE track.track_id IS NULL;\n\n-- create relationship adding the cascade so that any other changes that i do on either table dont mess up the order/stored data\nalter table echonest\nadd CONSTRAINT fk_track_echonest\nFOREIGN KEY (track_id) REFERENCES track(track_id)\non delete CASCADE\non update CASCADE;\nuse FMA\n \n",
     "options": {
         "tabSize": 4,
         "indentSize": 4,
@@ -15,22 +15,22 @@
             {
                 "inSelectionMode": false,
                 "selectionStart": {
-                    "lineNumber": 65,
-                    "column": 19
+                    "lineNumber": 67,
+                    "column": 2
                 },
                 "position": {
-                    "lineNumber": 65,
-                    "column": 19
+                    "lineNumber": 67,
+                    "column": 2
                 }
             }
         ],
         "viewState": {
             "scrollLeft": 0,
             "firstPosition": {
-                "lineNumber": 21,
+                "lineNumber": 47,
                 "column": 1
             },
-            "firstPositionDeltaTop": -8
+            "firstPositionDeltaTop": 6
         },
         "contributionsState": {
             "editor.contrib.folding": {},
@@ -77,8 +77,8 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "3290a769-9c18-4d61-d1df-4898c86fb73b",
-                        "4a82d901-a68d-4e09-97b7-3e88c941bd9f"
+                        "f9804fe9-6e3a-497b-ce4e-6a333d319b8c",
+                        "d96e1d9a-cca2-4120-cfae-92d3b27504dd"
                     ]
                 },
                 "currentHeight": 352,
@@ -106,8 +106,8 @@
             },
             "data": [
                 {
-                    "tabId": "3d95679a-01cb-4058-e896-c2a805d5bf02",
-                    "resultId": "3290a769-9c18-4d61-d1df-4898c86fb73b",
+                    "tabId": "d1122b57-8dde-4f76-e628-a03d86e73fe3",
+                    "resultId": "f9804fe9-6e3a-497b-ce4e-6a333d319b8c",
                     "rows": [
                         {
                             "0": 2,
@@ -1290,8 +1290,8 @@
                     "fullTableName": "track"
                 },
                 {
-                    "tabId": "3d95679a-01cb-4058-e896-c2a805d5bf02",
-                    "resultId": "4a82d901-a68d-4e09-97b7-3e88c941bd9f",
+                    "tabId": "d1122b57-8dde-4f76-e628-a03d86e73fe3",
+                    "resultId": "d96e1d9a-cca2-4120-cfae-92d3b27504dd",
                     "rows": [],
                     "executionInfo": {
                         "text": "OK, 0 records retrieved in 0s",
@@ -1358,7 +1358,7 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "34d30d77-9406-46c9-dc47-b1f5ac49fe26"
+                        "c7f4eb26-6e79-47e9-9872-08afa57f7ddb"
                     ]
                 },
                 "currentHeight": 352,
@@ -1386,8 +1386,8 @@
             },
             "data": [
                 {
-                    "tabId": "3d95679a-01cb-4058-e896-c2a805d5bf02",
-                    "resultId": "34d30d77-9406-46c9-dc47-b1f5ac49fe26",
+                    "tabId": "d1122b57-8dde-4f76-e628-a03d86e73fe3",
+                    "resultId": "c7f4eb26-6e79-47e9-9872-08afa57f7ddb",
                     "rows": [
                         {
                             "0": 2,
@@ -1532,7 +1532,7 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "fe60608b-d72c-49fd-ef2e-908ca5a3d6cb"
+                        "d11dc9cd-9347-411d-915b-1b45f2bef568"
                     ]
                 },
                 "currentHeight": 36,
@@ -1551,8 +1551,8 @@
             },
             "data": [
                 {
-                    "tabId": "3d95679a-01cb-4058-e896-c2a805d5bf02",
-                    "resultId": "fe60608b-d72c-49fd-ef2e-908ca5a3d6cb",
+                    "tabId": "d1122b57-8dde-4f76-e628-a03d86e73fe3",
+                    "resultId": "d11dc9cd-9347-411d-915b-1b45f2bef568",
                     "rows": [
                         {
                             "0": 2,
@@ -1697,7 +1697,7 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "2a4c7328-f48d-4954-ea85-b3a9738a5df0"
+                        "89b46647-ce98-4990-b5ca-97c1c2b7ec0c"
                     ]
                 },
                 "currentHeight": 36,
@@ -1725,8 +1725,8 @@
             },
             "data": [
                 {
-                    "tabId": "3d95679a-01cb-4058-e896-c2a805d5bf02",
-                    "resultId": "2a4c7328-f48d-4954-ea85-b3a9738a5df0",
+                    "tabId": "d1122b57-8dde-4f76-e628-a03d86e73fe3",
+                    "resultId": "89b46647-ce98-4990-b5ca-97c1c2b7ec0c",
                     "rows": [
                         {
                             "0": 2,
@@ -1917,7 +1917,7 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "5a7fc5e1-46c6-4c06-ecd6-8f6628ea4d44"
+                        "534f24eb-8e09-401a-d229-2660b603bbde"
                     ]
                 },
                 "currentHeight": 36,
@@ -1936,8 +1936,8 @@
             },
             "data": [
                 {
-                    "tabId": "3d95679a-01cb-4058-e896-c2a805d5bf02",
-                    "resultId": "5a7fc5e1-46c6-4c06-ecd6-8f6628ea4d44",
+                    "tabId": "d1122b57-8dde-4f76-e628-a03d86e73fe3",
+                    "resultId": "534f24eb-8e09-401a-d229-2660b603bbde",
                     "rows": [
                         {
                             "0": 1,
@@ -3205,8 +3205,8 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "357b2036-794c-4392-eccb-afbff2022f83",
-                        "b31cf774-8de5-4fc4-90b3-a0911d72dd47"
+                        "520bd90a-4e42-45b0-ec42-6ed21a07d470",
+                        "dbfa5318-d5eb-4a38-f4e5-9a1c72223942"
                     ]
                 },
                 "currentHeight": 36,
@@ -3234,8 +3234,8 @@
             },
             "data": [
                 {
-                    "tabId": "3d95679a-01cb-4058-e896-c2a805d5bf02",
-                    "resultId": "357b2036-794c-4392-eccb-afbff2022f83",
+                    "tabId": "d1122b57-8dde-4f76-e628-a03d86e73fe3",
+                    "resultId": "520bd90a-4e42-45b0-ec42-6ed21a07d470",
                     "rows": [
                         {
                             "0": "genre_id",
@@ -3392,8 +3392,8 @@
                     "updatable": false
                 },
                 {
-                    "tabId": "3d95679a-01cb-4058-e896-c2a805d5bf02",
-                    "resultId": "b31cf774-8de5-4fc4-90b3-a0911d72dd47",
+                    "tabId": "d1122b57-8dde-4f76-e628-a03d86e73fe3",
+                    "resultId": "dbfa5318-d5eb-4a38-f4e5-9a1c72223942",
                     "rows": [
                         {
                             "0": "track_id",
@@ -3839,7 +3839,7 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "9428360d-9c7f-47c4-935c-b602e4ee943a"
+                        "c237960c-dbe8-45a8-e098-2ad1d6219387"
                     ]
                 },
                 "currentHeight": 36,
@@ -3858,8 +3858,8 @@
             },
             "data": [
                 {
-                    "tabId": "3d95679a-01cb-4058-e896-c2a805d5bf02",
-                    "resultId": "9428360d-9c7f-47c4-935c-b602e4ee943a",
+                    "tabId": "d1122b57-8dde-4f76-e628-a03d86e73fe3",
+                    "resultId": "c237960c-dbe8-45a8-e098-2ad1d6219387",
                     "rows": [
                         {
                             "0": "track_id",
@@ -4354,7 +4354,7 @@
                         }
                     ]
                 },
-                "currentHeight": 352,
+                "currentHeight": 28,
                 "currentSet": 1,
                 "statements": [
                     {
@@ -4422,8 +4422,8 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "4df40d31-5a56-44b7-8edd-29371eb72d4d",
-                        "0ffd9a3d-9c81-426b-a596-10bd012b6fee"
+                        "4f1e7b0f-71e6-4728-c6ec-0cb3fa0daf70",
+                        "ee92cb6e-db8a-4c13-8968-2c73f63bdd23"
                     ]
                 },
                 "currentHeight": 36,
@@ -4451,8 +4451,8 @@
             },
             "data": [
                 {
-                    "tabId": "3d95679a-01cb-4058-e896-c2a805d5bf02",
-                    "resultId": "4df40d31-5a56-44b7-8edd-29371eb72d4d",
+                    "tabId": "d1122b57-8dde-4f76-e628-a03d86e73fe3",
+                    "resultId": "4f1e7b0f-71e6-4728-c6ec-0cb3fa0daf70",
                     "rows": [
                         {
                             "0": "track_id",
@@ -6569,8 +6569,8 @@
                     "updatable": false
                 },
                 {
-                    "tabId": "3d95679a-01cb-4058-e896-c2a805d5bf02",
-                    "resultId": "0ffd9a3d-9c81-426b-a596-10bd012b6fee",
+                    "tabId": "d1122b57-8dde-4f76-e628-a03d86e73fe3",
+                    "resultId": "ee92cb6e-db8a-4c13-8968-2c73f63bdd23",
                     "rows": [
                         {
                             "0": "track_id",
@@ -7016,7 +7016,7 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "80574a31-c07c-438e-ef2b-e8a792593b9d"
+                        "45869ff9-8fb6-46c6-c5a1-617cddc3e6bf"
                     ]
                 },
                 "currentHeight": 36,
@@ -7044,8 +7044,8 @@
             },
             "data": [
                 {
-                    "tabId": "3d95679a-01cb-4058-e896-c2a805d5bf02",
-                    "resultId": "80574a31-c07c-438e-ef2b-e8a792593b9d",
+                    "tabId": "d1122b57-8dde-4f76-e628-a03d86e73fe3",
+                    "resultId": "45869ff9-8fb6-46c6-c5a1-617cddc3e6bf",
                     "rows": [
                         {
                             "0": 4150
@@ -7276,7 +7276,42 @@
         {
             "state": {
                 "start": 66,
-                "end": 66,
+                "end": 67,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 0,
+                            "index": 0,
+                            "content": "MySQL Error (1064): ClassicSession.run_sql: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select * from track' at line 2",
+                            "language": "ansi"
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": ""
+                    }
+                },
+                "currentHeight": 40,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 9
+                        },
+                        "contentStart": 0,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 68,
+                "end": 68,
                 "language": "mysql",
                 "currentSet": 1,
                 "statements": [

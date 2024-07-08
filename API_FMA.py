@@ -5,7 +5,7 @@
 from flask import Flask, request, jsonify
 from collections import defaultdict
 import pymysql.cursors
-
+from flask_swagger_ui import get_swaggerui_blueprint
 
 app = Flask(__name__)
 
@@ -16,6 +16,13 @@ db_config = {
     'database': 'FMA',
     'cursorclass': pymysql.cursors.DictCursor
 }
+
+swaggerui_blueprint = get_swaggerui_blueprint(
+    base_url='/docs',
+    api_url='/static/FMA_API.yaml',
+)
+
+app.register_blueprint(swaggerui_blueprint)
 
 @app.route('/')
 def home():
