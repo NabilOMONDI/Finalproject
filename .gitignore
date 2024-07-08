@@ -1,0 +1,9 @@
+ECHO is on.
+# Ignore all CSV files
+*.csv
+
+# Ignore all ZIP files
+*.zip
+
+# Ignore all directories
+*/
