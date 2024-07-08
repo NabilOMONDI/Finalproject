@@ -59,3 +59,6 @@ def search_tracks_function():
                 return jsonify(tracks)
         except pymysql.MySQLError as e:
             return jsonify({'error':str(e)}),500
+
+if __name__ == "__main__":
+    app.run(debug=True)
